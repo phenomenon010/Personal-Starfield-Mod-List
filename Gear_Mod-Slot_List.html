@@ -1,355 +1,619 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FableFire's Starfield Mod List</title>
-    <style>
-        @page {
-            size: A4;
-            margin: 15mm 12mm;
-            background-color: #0b0d17;
-        }
-        *, *::before, *::after { box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0b0d17;
-            color: #d1d5db;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        .hero {
-            background-color: #151828;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 3px solid #f97316;
-            margin: -15mm -12mm 20px -12mm;
-        }
-        .hero h1 {
-            color: #ffffff;
-            font-size: 26pt;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .hero p {
-            font-size: 11pt;
-            color: #9ca3af;
-            margin-top: 10px;
-            max-width: 85%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .container {
-            width: 100%;
-            padding: 0 10px;
-        }
-        .links-box {
-            background-color: #1a1d2d;
-            border: 1px solid #2d3748;
-            padding: 15px;
-            text-align: center;
-            margin-bottom: 30px;
-            border-radius: 6px;
-        }
-        .btn {
-            display: inline-block;
-            background-color: #f97316;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 10px 15px;
-            margin: 5px 10px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 10.5pt;
-        }
-        .category-title {
-            color: #ffffff;
-            font-size: 16pt;
-            border-bottom: 2px solid #374151;
-            padding-bottom: 5px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-        .mod-card {
-            background-color: #1a1d2d;
-            border-left: 4px solid #f97316;
-            padding: 15px;
-            margin-bottom: 15px;
-            page-break-inside: avoid;
-        }
-        .mod-title {
-            font-size: 13pt;
-            color: #ffffff;
-            margin: 0 0 5px 0;
-            font-weight: bold;
-        }
-        .mod-title a {
-            color: #60a5fa;
-            text-decoration: none;
-        }
-        .mod-author {
-            font-size: 9.5pt;
-            color: #f59e0b;
-            margin-bottom: 10px;
-        }
-        .mod-desc {
-            font-size: 9.5pt;
-            color: #d1d5db;
-            margin: 0;
-        }
-        .mod-desc ul {
-            margin: 5px 0;
-            padding-left: 20px;
-        }
-        .notes-section {
-            background-color: #2a1215;
-            border-left: 4px solid #ef4444;
-            padding: 20px;
-            margin-top: 40px;
-        }
-        .notes-title {
-            color: #ef4444;
-            font-size: 15pt;
-            margin-top: 0;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-        .note-item {
-            margin-bottom: 15px;
-            page-break-inside: avoid;
-        }
-        .note-item h4 {
-            color: #ffffff;
-            margin: 0 0 5px 0;
-            font-size: 11pt;
-        }
-        .note-item p, .note-item ul {
-            font-size: 9.5pt;
-            margin: 0 0 10px 0;
-            padding-left: 20px;
-        }
-        /* Make it look centered and neat in a web browser too */
-        @media screen {
-            body { margin: 0; }
-            .hero { margin: 0; padding: 60px 20px; }
-            .container { max-width: 900px; margin: 0 auto; padding: 20px; }
-            .notes-section { border-radius: 4px; }
-            .mod-card { border-radius: 4px; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FableFire's Starfield Equipment Mod Database</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #0b0d17;
+        color: #d1d5db;
+        margin: 0;
+        padding: 20px;
+        line-height: 1.6;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: #151828;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        border: 1px solid #2d3748;
+    }
+    h1 {
+        text-align: center;
+        color: #ffffff;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-bottom: 3px solid #f97316;
+        padding-bottom: 15px;
+    }
+    .search-container {
+        margin-bottom: 25px;
+    }
+    #searchInput {
+        width: 100%;
+        max-width: 500px;
+        padding: 12px 20px;
+        font-size: 16px;
+        background-color: #1a1d2d;
+        border: 1px solid #4a5568;
+        border-radius: 6px;
+        display: block;
+        margin: 0 auto;
+        color: #ffffff;
+        transition: border-color 0.3s;
+    }
+    #searchInput:focus {
+        border-color: #f97316;
+        outline: none;
+    }
+    
+    /* Tabs styling */
+    .tab {
+        overflow: hidden;
+        background-color: #1a1d2d;
+        border-radius: 6px 6px 0 0;
+        display: flex;
+        border: 1px solid #2d3748;
+        border-bottom: none;
+    }
+    .tab button {
+        background-color: inherit;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 15px 24px;
+        transition: 0.3s;
+        font-size: 16px;
+        font-weight: bold;
+        flex: 1;
+        color: #9ca3af;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .tab button:hover {
+        background-color: #25293e;
+        color: #ffffff;
+    }
+    .tab button.active {
+        background-color: #151828;
+        color: #f97316;
+        border-top: 3px solid #f97316;
+        margin-top: -3px;
+    }
+
+    /* Tab content */
+    .tabcontent {
+        display: none;
+        padding: 25px;
+        background-color: #151828;
+        border: 1px solid #2d3748;
+        border-top: none;
+        border-radius: 0 0 6px 6px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    th, td {
+        padding: 14px 18px;
+        border-bottom: 1px solid #2d3748;
+        text-align: left;
+    }
+    th {
+        background-color: #1a1d2d;
+        color: #ffffff;
+        cursor: pointer;
+        position: sticky;
+        top: 0;
+        user-select: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+    }
+    th:hover {
+        background-color: #25293e;
+        color: #f97316;
+    }
+    tr:hover {
+        background-color: #1e2235;
+    }
+    .sort-icon {
+        margin-left: 8px;
+        font-size: 11px;
+        color: #9ca3af;
+    }
+    th.asc .sort-icon::after {
+        content: " ▲";
+        color: #f97316;
+    }
+    th.desc .sort-icon::after {
+        content: " ▼";
+        color: #f97316;
+    }
+    th:not(.asc):not(.desc) .sort-icon::after {
+        content: " ⇅";
+    }
+    .table-title {
+        color: #ffffff;
+        margin-top: 0;
+        border-bottom: 2px solid #374151;
+        padding-bottom: 10px;
+        font-size: 20px;
+    }
+</style>
 </head>
 <body>
 
-<div class="hero">
-    <h1>FableFire's Starfield Mod List</h1>
-    <p>Building a stable, heavily modified load order requires precision. Whether integrating new story arcs, adjusting mesh weighting, editing NIF files for custom assets, or scripting Kismet sequences, these carefully selected mods offer an expansive and stable foundation for a transformed universe.</p>
-</div>
-
 <div class="container">
-    <div class="links-box">
-        <a href="https://drive.google.com/drive/folders/1IuJSevtT30CsbuSPgMwMbvyM0jWRvTxs?usp=sharing" class="btn" target="_blank">Custom INI Configs</a>
-        <a href="https://phenomenon010.github.io/Starfield-Modlist/" class="btn" target="_blank">Mod Slot List (Weapons/Gear)</a>
-    </div>
-
-    <div class="category-title">Music and Radio</div>
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://www.nexusmods.com/starfield/mods/15933" target="_blank">WSTR Radio</a></div>
-        <div class="mod-author">by xXGRIMNIRXx</div>
-        <div class="mod-desc">Listen to three DJs: Ghost (morning show), Misty Graves (afternoon/night show), and Ron "Hal" Vega (third shift). Each has their own commercials & news and can be played in-game using an included radio mod.</div>
-    </div>
-
-    <div class="category-title">Must-Haves for New Players or New Game</div>
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://www.nexusmods.com/starfield/mods/11788?tab=description" target="_blank">Shattered Space Delayed Start</a></div>
-        <div class="mod-desc">A must-have for all new players. Shattered Space can easily be triggered at any point early on and has a recommended level of 35+. This prevents early shredding for new games (NOT NG+).</div>
-    </div>
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://www.nexusmods.com/starfield/mods/16373" target="_blank">Terran Armada Delayed</a></div>
-        <div class="mod-author">by Aurelianis</div>
-        <div class="mod-desc">Delays Terran Armada based on the selected player level or main quest progress in Gameplay Options, with an option to delay indefinitely.</div>
-    </div>
-
-    <div class="category-title">New Content Mods</div>
+    <h1>Starfield Equipment Mod Database</h1>
     
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/5d455df7-d99f-4619-a383-f2b39aa21e00/Watchtower__Orbital_Strike__Fleet_Command" target="_blank">Watchtower: Orbital.Strike\Fleet.Command</a></div>
-        <div class="mod-author">by kinggath_creations</div>
-        <div class="mod-desc">
-            A new faction has emerged to protect humanity with excessive power—and you are the target.
-            <ul>
-                <li>New Storyline to pilfer Watchtower's technology. Designed with extensive reactivity for Unity-jumpers.</li>
-                <li>Build a Fleet to fight beside you and provide orbital strikes.</li>
-                <li>New Skydrop attachments and Cyberamp facial attachments.</li>
-                <li>Travel between systems at level 15+ to start.</li>
-            </ul>
-        </div>
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="searchTables()" placeholder="Search active table for mods, descriptions, or slots...">
     </div>
 
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/d4f5c6a2-ea4f-4f74-b338-6403c5717ec0/McClarence_Outfitters__Legendary_Customization" target="_blank">McClarence Outfitters: Legendary Customization</a></div>
-        <div class="mod-author">by kinggath_creations</div>
-        <div class="mod-desc">Found near the spaceport in New Atlantis. Unlocks legendary swapping, item duplication, over 20+ new legendary effects, and a new custom spacesuit.</div>
+    <div class="tab">
+        <button class="tablinks active" onclick="openTab(event, 'Weapon')">Weapons</button>
+        <button class="tablinks" onclick="openTab(event, 'Spacesuit')">Spacesuits</button>
+        <button class="tablinks" onclick="openTab(event, 'Helmet')">Helmets</button>
+        <button class="tablinks" onclick="openTab(event, 'BoostPack')">Boost Packs</button>
     </div>
 
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/4bf1a31f-46d5-47bf-a5e6-d0f9e2496d0c/Trackers_Alliance__The_Vulture" target="_blank">Trackers Alliance: The Complete Bounty Series</a></div>
-        <div class="mod-author">by BethesdaGameStudios</div>
-        <div class="mod-desc">Five new high-value, high-stakes targets. Available on the Wanted Poster Display in the Trackers Alliance HQ after completing "Starjacker".</div>
+    <!-- WEAPONS TAB -->
+    <div id="Weapon" class="tabcontent" style="display: block;">
+        <h2 class="table-title">Weapon Modifications</h2>
+        <table id="WeaponTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('WeaponTable', 0)">Slot / Category <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('WeaponTable', 1)">Mod Name <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('WeaponTable', 2)">Description <span class="sort-icon"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Barrel</td><td>Standard Barrel</td><td>Standard layout altering basic trajectory and range.</td></tr>
+                <tr><td>Barrel</td><td>Long Barrel</td><td>Increases range and accuracy at the cost of weight.</td></tr>
+                <tr><td>Barrel</td><td>Short Barrel</td><td>Reduces weight and increases aim speed at the cost of range.</td></tr>
+                <tr><td>Barrel</td><td>Bull Barrel</td><td>Heavier barrel configuration for increased accuracy and stability.</td></tr>
+                <tr><td>Barrel</td><td>Fluted Barrel</td><td>Lightens the weapon while maintaining accuracy and cooling.</td></tr>
+                <tr><td>Barrel</td><td>Magnetic Rails</td><td>Electromagnetically accelerates projectiles for massive damage.</td></tr>
+                <tr><td>Barrel</td><td>Suppressed Barrel</td><td>Integrates a sound suppressor to mask firing profile.</td></tr>
+                <tr><td>Barrel</td><td>Advanced Barrel</td><td>Improves heat mechanics for increased damage at the cost of fire rate.</td></tr>
+                <tr><td>Cover</td><td>Removed Cover</td><td>Exposes internal casing to reduce weapon weight.</td></tr>
+                <tr><td>Cover</td><td>Standard Cover</td><td>Standard housing cover layout.</td></tr>
+                <tr><td>Cover</td><td>Amplifier</td><td>Internal housing energy amplifier to scale energy output.</td></tr>
+                <tr><td>Laser & Optics</td><td>Iron Sights</td><td>Standard mechanical targeting layout.</td></tr>
+                <tr><td>Laser & Optics</td><td>Laser Sight</td><td>Casts a laser tracking node to increase hip-fire accuracy.</td></tr>
+                <tr><td>Laser & Optics</td><td>Recon Laser Sight</td><td>Targets marked automatically when aimed over.</td></tr>
+                <tr><td>Laser & Optics</td><td>Reflex Sight</td><td>Electronic sight offering rapid target acquisition.</td></tr>
+                <tr><td>Laser & Optics</td><td>Holographic Sight</td><td>High-accuracy holographic projection aiming lens.</td></tr>
+                <tr><td>Laser & Optics</td><td>Short Scope</td><td>Low-magnification long-range optic.</td></tr>
+                <tr><td>Laser & Optics</td><td>Medium Scope</td><td>Mid-magnification long-range optic.</td></tr>
+                <tr><td>Laser & Optics</td><td>Long Scope</td><td>High-magnification long-range optic.</td></tr>
+                <tr><td>Laser & Optics</td><td>Recon Scope</td><td>High-magnification tracking scope layout.</td></tr>
+                <tr><td>Muzzle</td><td>Compensator</td><td>Increases stability and hip-fire accuracy.</td></tr>
+                <tr><td>Muzzle</td><td>Muzzle Brake</td><td>Controls gas distribution to stabilize severe vertical recoil.</td></tr>
+                <tr><td>Muzzle</td><td>Large Muzzle Brake</td><td>Heavy recoil control module.</td></tr>
+                <tr><td>Muzzle</td><td>Suppressor</td><td>Separately attached muzzle suppressor for stealth optimization.</td></tr>
+                <tr><td>Muzzle</td><td>Stealth Lasers</td><td>Lowers weapon emission visibility signature.</td></tr>
+                <tr><td>Muzzle</td><td>Shock Charge Band</td><td>Adds an electrical component to impacts.</td></tr>
+                <tr><td>Muzzle</td><td>Choke</td><td>Specifically constricts shotgun projectile spread patterns.</td></tr>
+                <tr><td>Muzzle</td><td>Focus Nozzle</td><td>Pinpoints plasma/laser arcs into highly concentrated beams.</td></tr>
+                <tr><td>Stock & Grips</td><td>Standard Grip</td><td>Standard grip profile.</td></tr>
+                <tr><td>Stock & Grips</td><td>Tactical Grip</td><td>Lightweight ergonomics for increased aim down sights speed.</td></tr>
+                <tr><td>Stock & Grips</td><td>Ergonomic Grip</td><td>Highly tailored grip to balance recoil control.</td></tr>
+                <tr><td>Stock & Grips</td><td>Standard Stock</td><td>Standard rifle buttstock.</td></tr>
+                <tr><td>Stock & Grips</td><td>Tactical Stock</td><td>Lightened stock configuration maximizing handling traits.</td></tr>
+                <tr><td>Stock & Grips</td><td>Ergonomic Stock</td><td>Optimal weight allocation to mitigate prolonged sight drift.</td></tr>
+                <tr><td>Stock & Grips</td><td>Stabilizing Stock</td><td>Specialized heavy stock to curb automatic recoil sway.</td></tr>
+                <tr><td>Stock & Grips</td><td>Folding Stock</td><td>Greatly reduces size and weapon weight.</td></tr>
+                <tr><td>Magazine & Battery</td><td>Standard Magazine/Battery</td><td>Default structural ammunition cell capacity.</td></tr>
+                <tr><td>Magazine & Battery</td><td>Small/Large/Tactical Magazine/Battery</td><td>Shifts cell capacity or reload pacing parameters.</td></tr>
+                <tr><td>Magazine & Battery</td><td>Drum Magazine</td><td>Maximizes storage capacity at the absolute cost of speed.</td></tr>
+                <tr><td>Magazine & Battery</td><td>Armor-Piercing Rounds</td><td>Heavy-casing projectiles built to defeat armor layers.</td></tr>
+                <tr><td>Magazine & Battery</td><td>Depleted Uranium Rounds</td><td>Highly dense cores that cut through advanced armor arrays.</td></tr>
+                <tr><td>Magazine & Battery</td><td>EM-Charged Shot / Electromagnetic Beams/Magazine</td><td>Inflicts systemic disruption to stun organic and mechanical entities.</td></tr>
+                <tr><td>Magazine & Battery</td><td>Explosive Rounds</td><td>Generates volatile shell detonations upon impact points.</td></tr>
+                <tr><td>Magazine & Battery</td><td>Flechette Rounds</td><td>Fires tearing barbs that slice through soft target armor layers.</td></tr>
+                <tr><td>Magazine & Battery</td><td>Penetrator Rounds</td><td>Pierces cleanly through enemies and thin cover surfaces.</td></tr>
+                <tr><td>Magazine & Battery</td><td>Whitehot Rounds</td><td>Thermal-tipped ammunition designed to continuously burn targets.</td></tr>
+                <tr><td>Magazine & Battery</td><td>Annihilator Rounds</td><td>Projectiles radiating an unstable aura that aggressively spreads across adjacent entities.</td></tr>
+                <tr><td>Internal</td><td>Amplifier</td><td>Scales energy beam potency and overall kinetic power output.</td></tr>
+                <tr><td>Internal</td><td>Bullet Hose</td><td>Specialized high-cycle action multiplying range, fire rate, and accuracy attributes.</td></tr>
+                <tr><td>Internal</td><td>Hair Trigger</td><td>Significantly increases weapon cycle response and fire rate.</td></tr>
+                <tr><td>Internal</td><td>High Powered</td><td>Upgrades internal receiver linkages to boost muzzle energy and damage.</td></tr>
+                <tr><td>Internal</td><td>High Velocity</td><td>Specialized internal component optimization to drive higher bullet speeds.</td></tr>
+                <tr><td>Internal</td><td>Overclocked</td><td>Forces mechanical actions past intended safety baselines to elevate cyclic fire rate.</td></tr>
+                <tr><td>Receiver</td><td>Semi-Automatic</td><td>Traditional single projectile discharge per cycle.</td></tr>
+                <tr><td>Receiver</td><td>Burst Fire</td><td>Discharges a set, high-velocity grouped burst per single action.</td></tr>
+                <tr><td>Receiver</td><td>Fully Automatic</td><td>Provides a continuous payload stream while trigger remains down.</td></tr>
+                <tr><td>Receiver</td><td>Binary Trigger</td><td>Doubles fire cycling speeds by firing on both trigger depression and release steps.</td></tr>
+                <tr><td>Melee Additions</td><td>Alloyed Steel Blade</td><td>Hardened edge composition augmenting base cutting power.</td></tr>
+                <tr><td>Melee Additions</td><td>Corroding Blade</td><td>Imbues slashes with persistent acidic armor-stripping properties.</td></tr>
+                <tr><td>Melee Additions</td><td>Alloy Handle</td><td>Lightens balance to favor swift kinetic attack cycles.</td></tr>
+                <tr><td>Melee Additions</td><td>Ergonomic Handle</td><td>Stabilizes stance to maximize weapon impact force profiles.</td></tr>
+                <tr><td>Melee Additions</td><td>Experimental Alloy Handle</td><td>Advanced construction balancing extreme cutting swing paces.</td></tr>
+                <tr><td>Melee Additions</td><td>Accelerant</td><td>Dramatically boosts swinging speed at the absolute cost of edge tracking.</td></tr>
+                <tr><td>Upgrade Module</td><td>Accuracy Upgrade</td><td>Permanent technical application optimizing stability thresholds.</td></tr>
+                <tr><td>Upgrade Module</td><td>Aim Speed Upgrade</td><td>Mechanical modifications targeting target acquisition velocity.</td></tr>
+                <tr><td>Upgrade Module</td><td>Ammo Capacity Upgrade</td><td>Physical alignment increasing structural ammunition capacities.</td></tr>
+                <tr><td>Upgrade Module</td><td>Attack Speed Upgrade</td><td>Mechanical adjustments boosting physical strike or action velocity.</td></tr>
+                <tr><td>Upgrade Module</td><td>Damage Upgrade</td><td>Baseline calibration pushing core explosive or physical impact metrics higher.</td></tr>
+                <tr><td>Upgrade Module</td><td>Range Upgrade</td><td>Muzzle and energy alignment extending terminal velocity profiles.</td></tr>
+                <tr><td>Upgrade Module</td><td>Reload Speed Upgrade</td><td>Friction reduction to optimize magazine exchange windows.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Anti-Personnel</td><td>+10% damage against humans.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Bashing</td><td>Deals double damage when gun bashing.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Berserker</td><td>Deal more damage the less armor one has.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Cornered</td><td>Damage increases as health decreases.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Disassembler</td><td>+20% damage against robots.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Extended Magazine</td><td>Doubles the base magazine capacity.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Exterminator</td><td>+30% damage against aliens.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Furious</td><td>Each consecutive hit deals more damage.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Instigating</td><td>Deals double damage to targets with full health.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Space-Adept</td><td>+30% damage while in space, and -15% damage while on a planet.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Corrosive</td><td>Randomly deals corrosive damage and reduces the targets' armor over 6 seconds.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Crippling</td><td>Deals +30% damage on the next attack after hitting a target's limbs.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Handloading</td><td>Volatile rounds that are designed to pack a bigger punch, but aren't as stable and can fail on occasion.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Hitman</td><td>+15% damage while aiming.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Incendiary</td><td>Randomly deals incendiary damage.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Lacerate</td><td>Randomly applies a bleed effect to the target.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Med Theft</td><td>Chance that humans drop extra Med Packs on death.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Poison</td><td>Randomly deals poison damage and slows the target.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Radioactive</td><td>Randomly deals radioactive damage and demoralizes (add fear/panic debuff that interrupts combat behavior and forces retreat) the target.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Rapid</td><td>+25% increase in attack speed.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Staggering</td><td>Small chance to stagger enemies.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Concussive</td><td>Small chance to knock down targets.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Demoralizing</td><td>Small chance to demoralize (add fear/panic debuff that interrupts combat behavior and forces retreat) a target.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Explosive</td><td>Randomly switches to explosive rounds.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Frenzy</td><td>Small chance to frenzy a target.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>One Inch Punch</td><td>Rounds fire in a shotgun-like spread.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Shattering</td><td>Break through even the strongest armor.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Skip Shot</td><td>Every fourth shot fires two projectiles at once.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Tesla</td><td>Rounds will sometimes emit electricity where they land that damages and slows nearby targets.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Titanium Build</td><td>Premium build materials make this weapon light as a feather.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Barbaric</td><td>Attacks are faster and get more powerful with each consecutive hit; movement speed is increased while in combat.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Bloodthirsty</td><td>Killing enemies grants health.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Kismet</td><td>On reload, there is a 25% chance to triple your magazine size.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Methodical</td><td>Grants a massive damage boost after killing elite enemies.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Reckless</td><td>Ranged weapons only: Magazine size is reduced to 1, damage is increased by 500%, and your maximum health is reduced by 50%.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Saboteur</td><td>Damaging robots has a chance to instantly kill them, and robots that die from this effect also explode.</td></tr>
+            </tbody>
+        </table>
     </div>
 
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/8d465f06-528d-4f47-9a69-052350533bb1/Redgrave" target="_blank">Redgrave</a></div>
-        <div class="mod-author">by TheMilkArtist</div>
-        <div class="mod-desc">Takes you to a struggling LIST colony. Features 10 quests, new weapons/outfit, customizable player home, and new planet-bound radiant POIs. Starts in Neon (look for Elira Elgin at Madame Sauvage's).</div>
+    <!-- SPACESUITS TAB -->
+    <div id="Spacesuit" class="tabcontent">
+        <h2 class="table-title">Spacesuit Modifications</h2>
+        <table id="SpacesuitTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('SpacesuitTable', 0)">Slot / Category <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('SpacesuitTable', 1)">Mod Name <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('SpacesuitTable', 2)">Description <span class="sort-icon"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Slot 1</td><td>Ballistic Shielding</td><td>Increases physical damage resistance.</td></tr>
+                <tr><td>Slot 1</td><td>EM Shielding</td><td>Increases Electromagnetic resistance.</td></tr>
+                <tr><td>Slot 1</td><td>Energy Shielding</td><td>Increases Energy resistance.</td></tr>
+                <tr><td>Slot 1 (Additional)</td><td>Improved Ballistic Shielding</td><td>greatly increases ballistic resistance.</td></tr>
+                <tr><td>Slot 1 (Additional)</td><td>EM+Energy Shielding</td><td>increases both energy and EM resistances.</td></tr>
+                <tr><td>Slot 2</td><td>Explosive Shielding</td><td>Reduces damage taken from explosives.</td></tr>
+                <tr><td>Slot 2</td><td>Optimized Servos</td><td>Reduces Oxygen cost for sprinting.</td></tr>
+                <tr><td>Slot 2</td><td>Auto-Medic</td><td>Automatically use a Med Pack when hit and health is below 25%, once every 60 seconds.</td></tr>
+                <tr><td>Slot 2 (Additional)</td><td>Thermal/Corrosive/Radiation/Airborne Shielding</td><td>increases resistance to corresponding environmental damage.</td></tr>
+                <tr><td>Slot 3</td><td>Heavy Shielding</td><td>Increases all overarching damage resistances.</td></tr>
+                <tr><td>Slot 3</td><td>Exo Servos</td><td>Increases melee damage output.</td></tr>
+                <tr><td>Slot 3 (Additional)</td><td>Chem Distribution System</td><td>increases all Chems duration.</td></tr>
+                <tr><td>Slot 3 (Additional)</td><td>Composite Materials</td><td>reduces weight.</td></tr>
+                <tr><td>Slot 3 (Additional)</td><td>Hazard Protection</td><td>increases resistance to all types of environmental damage.</td></tr>
+                <tr><td>Slot 4</td><td>Pocketed</td><td>Increases overall carrying capacity.</td></tr>
+                <tr><td>Slot 4</td><td>Gravitic Composites</td><td>Reduces detection from enemies, enhancing stealth.</td></tr>
+                <tr><td>Slot 4 (Additional)</td><td>Fortified Servos</td><td>increases jump height.</td></tr>
+                <tr><td>Slot 4 (Additional)</td><td>Life Support</td><td>decreases change of getting an affliction.</td></tr>
+                <tr><td>Slot 4 (Additional)</td><td>Internal Dampeners</td><td>increases stagger resistance.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Ablative</td><td>-15% incoming energy damage.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Anti-Ballistic</td><td>-15% incoming Physical damage from ranged weapons.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Beast Hunter</td><td>-15% damage from Alien enemies.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Bolstering</td><td>Grants up to +100 Energy resistance and Physical resistance, the lower your health.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Chameleon</td><td>Blend with the environment while sneaking and not moving.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Combat Veteran</td><td>-15% damage from Human enemies.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>O2 Boosted</td><td>+20% oxygen capacity.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>O2 Filter</td><td>-25% oxygen consumption.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Sturdy</td><td>-15% incoming melee damage.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Technician</td><td>-15% damage from Robot enemies.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Acrobat</td><td>-50% fall damage.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Analyzer</td><td>+10% damage to scanned targets.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Antiseptic</td><td>+25 Airborne Resistance.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Auto-Medic</td><td>Automatically use a Med Pack when hit and health is below 25%, once every 60 seconds.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Fastened</td><td>+20 carry capacity.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Galvanized</td><td>+25 Corrosive Resistance.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Hacker</td><td>+2 max auto attempts that can be banked while hacking.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Leadlined</td><td>+25 Radiation Resistance.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Liquid Cooled</td><td>+25 Thermal Resistance.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Resource Hauler</td><td>Resources weigh 25% less.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Weapon Holsters</td><td>Weapons weigh 50% less.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Armor-Plated</td><td>-10% incoming Physical, Energy, and EM damage.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Assisted Carry</td><td>Drain 75% less O2 when running while encumbered.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Fast Reflexes</td><td>+15% Movement speed.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Headhunter</td><td>Deals +25% damage on the next attack after hitting a target's head.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Incendiary</td><td>10% chance to ignite nearby attackers.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Mechanized</td><td>+40 carry capacity.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Mirrored</td><td>4% chance to reflect attacks.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Reactive</td><td>10% chance to stagger nearby attackers.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Repulsing</td><td>5% chance to disarm nearby attackers.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Sentinel</td><td>75% chance to reduce damage by 50% while standing still.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Sensor Chip</td><td>+20% accuracy while firing on the move.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Abyssal Release</td><td>After taking significant damage, you automatically deal massive amounts of damage to an attacker.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Advanced Targeting</td><td>Kills while moving increase your accuracy by 15% for 20 seconds; stacks up to three times.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Electrified</td><td>Enemies attacking have a chance to be electrocuted.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Enigmatic</td><td>Holograms of yourself appear while in combat, confusing enemies.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Inspiring</td><td>Increases companion health and damage output.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Mercenary</td><td>Killing 3 enemies within 10 seconds increases your critical hit chance by 50% for 20 seconds.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Speedster</td><td>While at full health you run much faster, and taking damage has a chance to knockdown nearby enemies.</td></tr>
+            </tbody>
+        </table>
     </div>
 
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/b7d9ccea-4c2e-4960-9322-3cdcba825e79/Everbright" target="_blank">Everbright</a></div>
-        <div class="mod-author">by AlmightySE</div>
-        <div class="mod-desc">Travel to Alpha Andraste III to respond to an SOS. Uncover the secrets of the Everbright Sanctum, unlock a romanceable companion, a player home, and a fully equipped settlement.</div>
+    <!-- HELMETS TAB -->
+    <div id="Helmet" class="tabcontent">
+        <h2 class="table-title">Helmet Modifications</h2>
+        <table id="HelmetTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('HelmetTable', 0)">Slot / Category <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('HelmetTable', 1)">Mod Name <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('HelmetTable', 2)">Description <span class="sort-icon"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Slot 1</td><td>Ballistic Shielding</td><td>Increases physical damage resistance.</td></tr>
+                <tr><td>Slot 1</td><td>EM Shielding</td><td>Increases Electromagnetic resistance.</td></tr>
+                <tr><td>Slot 1</td><td>Energy Shielding</td><td>Increases Energy resistance.</td></tr>
+                <tr><td>Slot 1 (Additional)</td><td>Improved Ballistic Shielding</td><td>greatly increases ballistic resistance.</td></tr>
+                <tr><td>Slot 1 (Additional)</td><td>EM+Energy Shielding</td><td>increases both energy and EM resistances.</td></tr>
+                <tr><td>Slot 2</td><td>Explosive Shielding</td><td>Reduces damage taken from explosives.</td></tr>
+                <tr><td>Slot 2</td><td>Sensor Array</td><td>Increases the detection range of enemies on the compass.</td></tr>
+                <tr><td>Slot 2 (Additional)</td><td>Thermal/Corrosive/Radiation/Airborne Shielding</td><td>increases resistance to corresponding environmental damage.</td></tr>
+                <tr><td>Slot 3</td><td>Heavy Shielding</td><td>Increases all overarching damage resistances.</td></tr>
+                <tr><td>Slot 3 (Additional)</td><td>Composite Materials</td><td>reduces weight.</td></tr>
+                <tr><td>Slot 3 (Additional)</td><td>Hazard Protection</td><td>increases resistance to all types of environmental damage.</td></tr>
+                <tr><td>Slot 3 (Additional)</td><td>Integrated Optics</td><td>increases weapon range.</td></tr>
+                <tr><td>Slot 3 (Additional)</td><td>Targeting Support</td><td>increases sneak attack damage.</td></tr>
+                <tr><td>Slot 4</td><td>Gravitic Composites</td><td>Reduces detection from enemies, enhancing stealth.</td></tr>
+                <tr><td>Slot 4 (Additional)</td><td>CO2 Scrubbers</td><td>increases CO2 recovery rate.</td></tr>
+                <tr><td>Slot 4 (Additional)</td><td>Combat Interface</td><td>increases weapon accuracy.</td></tr>
+                <tr><td>Slot 4 (Additional)</td><td>Tactical Analyzer</td><td>increases critical chance and critical damage.</td></tr>
+                <tr><td>Slot 4 (Additional)</td><td>Reinforced Visor</td><td>decreases headshot damage.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Ablative</td><td>-15% incoming energy damage.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Anti-Ballistic</td><td>-15% incoming Physical damage from ranged weapons.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Beast Hunter</td><td>-15% damage from Alien enemies.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Bolstering</td><td>Grants up to +100 Energy resistance and Physical resistance, the lower your health.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Chameleon</td><td>Blend with the environment while sneaking and not moving.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Combat Veteran</td><td>-15% damage from Human enemies.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>O2 Boosted</td><td>+20% oxygen capacity.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>O2 Filter</td><td>-25% oxygen consumption.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Sturdy</td><td>-15% incoming melee damage.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Technician</td><td>-15% damage from Robot enemies.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Acrobat</td><td>-50% fall damage.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Analyzer</td><td>+10% damage to scanned targets.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Antiseptic</td><td>+25 Airborne Resistance.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Auto-Medic</td><td>Automatically use a Med Pack when hit and health is below 25%, once every 60 seconds.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Fastened</td><td>+20 carry capacity.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Galvanized</td><td>+25 Corrosive Resistance.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Hacker</td><td>+2 max auto attempts that can be banked while hacking.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Leadlined</td><td>+25 Radiation Resistance.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Liquid Cooled</td><td>+25 Thermal Resistance.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Resource Hauler</td><td>Resources weigh 25% less.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Weapon Holsters</td><td>Weapons weigh 50% less.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Armor-Plated</td><td>-10% incoming Physical, Energy, and EM damage.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Assisted Carry</td><td>Drain 75% less O2 when running while encumbered.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Fast Reflexes</td><td>+15% Movement speed.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Headhunter</td><td>Deals +25% damage on the next attack after hitting a target's head.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Incendiary</td><td>10% chance to ignite nearby attackers.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Mechanized</td><td>+40 carry capacity.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Mirrored</td><td>4% chance to reflect attacks.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Reactive</td><td>10% chance to stagger nearby attackers.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Repulsing</td><td>5% chance to disarm nearby attackers.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Sentinel</td><td>75% chance to reduce damage by 50% while standing still.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Sensor Chip</td><td>+20% accuracy while firing on the move.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Abyssal Release</td><td>After taking significant damage, you automatically deal massive amounts of damage to an attacker.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Advanced Targeting</td><td>Kills while moving increase your accuracy by 15% for 20 seconds; stacks up to three times.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Electrified</td><td>Enemies attacking have a chance to be electrocuted.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Enigmatic</td><td>Holograms of yourself appear while in combat, confusing enemies.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Inspiring</td><td>Increases companion health and damage output.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Mercenary</td><td>Killing 3 enemies within 10 seconds increases your critical hit chance by 50% for 20 seconds.</td></tr>
+                <tr><td>Rank 4 (Exotic)</td><td>Speedster</td><td>While at full health you run much faster, and taking damage has a chance to knockdown nearby enemies.</td></tr>
+            </tbody>
+        </table>
     </div>
 
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/2e6681e6-1ab3-4dc4-b30c-3666ea457e20/The_Headhunter" target="_blank">The Headhunter</a></div>
-        <div class="mod-author">by zone79</div>
-        <div class="mod-desc">Starts at the Mantis Lair on Denebola (Levels 20+). Leads to Space Station 79—a grungy, lived-in base you can claim. Includes Pet Companions (Thrasher, Gizmo, Farmbot, Tryhard), new weapons, spacesuits, and gear.</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/c698f6a0-191a-402e-832f-8ad762698f39/Cryomancers___A_New_Faction" target="_blank">Cryomancers - A New Faction</a></div>
-        <div class="mod-author">by zone79</div>
-        <div class="mod-desc">Introduces an organized cryogenic faction with humans, altered beasts, and bots. Adds nearly 30 new randomly generated POIs, 12 weapons, 5 spacesuits, a player lair, and a custom ship. Mission starts in The Well.</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/daa65855-1e97-495d-aa7d-fd675e40024c/The_Perfect_Recipe" target="_blank">The Perfect Recipe</a></div>
-        <div class="mod-author">by BethesdaGameStudios</div>
-        <div class="mod-desc">Found at Sinclair's Books in Akila City. Follow the story of a promising chef whose life was derailed by the Colony War.</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/00dbbd21-c13c-400c-81e3-ab8d816c26ab/VIGILANCE" target="_blank">VIGILANCE & Faction Skin Pack</a></div>
-        <div class="mod-author">by NovaFinchCreations</div>
-        <div class="mod-desc">Adds the VIGILANCE Spacesuit with toggleable abilities, the Nightingale .50 cal SMG, deployable energy shields, a crowbar, and a massive underground dungeon on Tirna II. Included Faction Skin Pack adds 7 faction themes.</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://www.nexusmods.com/starfield/mods/14225" target="_blank">Legacy's End - Wild Card</a></div>
-        <div class="mod-author">by FlippingEggs</div>
-        <div class="mod-desc">An alternate ending to the Crimson Fleet questline. Keep Kryx's Legacy, or give it to the Freestar Collective or House Va'ruun. Fully voiced with almost 700 lines of dialogue.</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/91bc2fcd-37dd-417d-b2d6-54e793a001e6/Sammy_and_the_Lab_of_Nightmares" target="_blank">Sammy and the Lab of Nightmares</a></div>
-        <div class="mod-author">by AdamDunmer</div>
-        <div class="mod-desc">Join Xenobiology Research Wing DC-29. Features 8 new quests, a new companion (Sammy), and a satirical 5-6 hour adventure. Start by finding an inebriated bounty hunter outside Aggie's Bar in Akila City.</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/4ee60f88-5bf6-4c7e-af31-f944f69b9d1a" target="_blank">The Veil & Beyond the Veil</a></div>
-        <div class="mod-author">by AlmightySE</div>
-        <div class="mod-desc">Join Emily Archer on a journey beyond the stars to confront an advanced faction. "The Veil" starts with a distress call in the Andromas system (Level 10+). "Beyond the Veil" continues the story (Find David in the Vanguard Orientation Hall).</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/6779e8b2-b464-44d1-9285-deebc452e6fb/The_Silent_Covenant" target="_blank">The Silent Covenant</a></div>
-        <div class="mod-author">by Checker90</div>
-        <div class="mod-desc">A mysterious new faction that selects assassins for unquestioned contracts. Decisions shape your fate, unlocking a unique follower and property.</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title">Dark Universe Series (Crossfire, Takeover, Overtime, Outlaws 01)</div>
-        <div class="mod-author">by kaosnyrb</div>
-        <div class="mod-desc">
-            <ul>
-                <li><strong>Crossfire:</strong> Adds dynamic space encounters (piracy boarding, skirmishes, smugglers).</li>
-                <li><strong>Takeover:</strong> Adds 50 new procedurally generated Spacer Military Bases compatible with bounties.</li>
-                <li><strong>Overtime:</strong> Adds over 300 new repeatable sandbox missions across 65 types.</li>
-                <li><strong>Outlaws 01:</strong> 100 bounty-hunting quest chains with unique backstories and legendary loot.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://www.nexusmods.com/starfield/mods/12749" target="_blank">Chunks Noir</a></div>
-        <div class="mod-author">by Deman445</div>
-        <div class="mod-desc">Find out what Chunks are really made of in this film noir mystery. Start by finding a dataslate ("RANGERS, I NEED BACKUP") at The Rock in Akila.</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://www.nexusmods.com/starfield/mods/14807?file_id=56399" target="_blank">IDG Quest - From The Gutter To The SkyLine</a></div>
-        <div class="mod-author">by INTDEXGaming</div>
-        <div class="mod-desc">Meet "Echo", a Starborn seeking redemption in Neon. Trigger the quest by talking to her in front of "Offworld Eats" in the Neon Underbelly.</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://www.nexusmods.com/starfield/mods/10847" target="_blank">Neon Smuggler Warehouse</a></div>
-        <div class="mod-author">by DownfallNemesis</div>
-        <div class="mod-desc">A small side quest rewarding a new player home warehouse in Neon.</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/6d89fcba-9940-4d8b-abc7-5cdb2c9b5a4d/At_Hell__39_s_Gate" target="_blank">At Hell's Gate (DOOM crossover)</a></div>
-        <div class="mod-author">by Kinggath Creations</div>
-        <div class="mod-desc">Investigate an evil force. Rewards include the Praetor Suit, Super Shotgun, and Crucible Blade. Includes Free Lanes Enhancement Patch.</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/beefc7ae-59f4-4934-b2a5-d04e5264f029/Starborn_Gravis_Suit" target="_blank">Starborn Gravis Suit</a></div>
-        <div class="mod-author">by BethesdaGameStudios</div>
-        <div class="mod-desc">Explore in a mysterious new suit. Found in your room at the Lodge.</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title"><a href="https://creations.bethesda.net/en/starfield/details/bda30d51-deb3-4b2a-987e-5fcaf591699f/Faction__amp__Encounter_Expansion_Project" target="_blank">Factions & Encounters Expanded</a></div>
-        <div class="mod-author">by The_Wulfy</div>
-        <div class="mod-desc">Adds nine new factions (BiOc's, Jager's, LiteRyder's, Rador's, Section 8, etc.) to existing POIs with unique loot and skins. Integrates with the DU: Takeover patch.</div>
-    </div>
-
-    <div class="mod-card">
-        <div class="mod-title">Constellation Themed Skins & Dripfield</div>
-        <div class="mod-author">by The_Wulfy</div>
-        <div class="mod-desc">Collection I adds 12 unique Constellation skins. Dripfield adds 30 skins for non-Starborn spacesuits and 52 new skins for apparel/headwear via the Constellation Apparel Workbench.</div>
-    </div>
-
-    <!-- MOD NOTES SECTION -->
-    <div class="notes-section">
-        <h2 class="notes-title">⚠️ Special Mod Notes & Conflict Warnings</h2>
-        
-        <div class="note-item">
-            <h4>Gangs All Here</h4>
-            <ul>
-                <li><strong>Main Story Quests:</strong> Use only ONE companion to avoid breaking quest scripts.</li>
-                <li><strong>Companion Quests:</strong> Conflicts can cause progression issues; limit to 1 companion or lock extra companions in mod settings.</li>
-                <li><strong>General Play:</strong> Keep active companions to two or three max for stability.</li>
-            </ul>
-        </div>
-
-        <div class="note-item">
-            <h4>Upgraded Companions</h4>
-            <p>Must be loaded <strong>BEFORE</strong> "The Gang's All Here" in your load order.</p>
-        </div>
-
-        <div class="note-item">
-            <h4>Legacy's End - Wild Card</h4>
-            <ul>
-                <li><strong>Companion Limit:</strong> Bring ONLY 1 companion to prevent narrative breaks.</li>
-                <li><strong>Dark Universe - Crossfire Conflict:</strong> Make a save immediately before grav jumping to the designated space station. If space encounters load on top of the friendly fleet, reload to prevent progression issues.</li>
-                <li><strong>Fleet Mods:</strong> Using Watchtower or Fleet Commander will make space combat extremely easy.</li>
-                <li><strong>Useful Brigs:</strong> Do not subdue named quest NPCs. Release or turn in prisoners before advancing to the space station to prevent brig bugs.</li>
-            </ul>
-        </div>
-
-        <div class="note-item">
-            <h4>Chunks Noir</h4>
-            <p><strong>Known Issue:</strong> Due to a change to Athena Tower Elevators, pre-established saves require a location reset on New Atlantis. Travel to Venus and wait 10 in-game hours to fix elevator alignment issues.</p>
-        </div>
+    <!-- BOOST PACKS TAB -->
+    <div id="BoostPack" class="tabcontent">
+        <h2 class="table-title">Boost Pack Modifications</h2>
+        <table id="BoostPackTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('BoostPackTable', 0)">Slot / Category <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('BoostPackTable', 1)">Mod Name <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('BoostPackTable', 2)">Description <span class="sort-icon"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Slot 1</td><td>Extra Capacity</td><td>Increases carrying capacity via pack modifications.</td></tr>
+                <tr><td>Slot 1</td><td>Hazard Protection</td><td>Boosts resistance to Airborne, Thermal, Corrosive, and Radiation hazards.</td></tr>
+                <tr><td>Slot 1</td><td>Oxygen Reserve</td><td>Expands maximum oxygen reserves.</td></tr>
+                <tr><td>Slot 1 (Additional)</td><td>Slot 1: Zero-G Stabilizers</td><td>less weapon recoil in Zero-G.</td></tr>
+                <tr><td>Slot 1 (Additional)</td><td>Slot 1: Heavy Shielding</td><td>increase all damage resistance and weight.</td></tr>
+                <tr><td>Slot 2</td><td>Emergency Aid</td><td>Administers emergency aid when health is low, recharging after a short time.</td></tr>
+                <tr><td>Slot 2</td><td>Medic</td><td>Enhances overall medical capabilities.</td></tr>
+                <tr><td>Slot 2</td><td>Regeneration</td><td>Slowly restores health outside of active combat scenarios.</td></tr>
+                <tr><td>Slot 2 (Additional)</td><td>Ammo Pockets</td><td>increases reload speed.</td></tr>
+                <tr><td>Slot 2 (Additional)</td><td>Weight Redistribution</td><td>decreases weight of all items.</td></tr>
+                <tr><td>Type Slot</td><td>Basic Boostpack</td><td>Entry-level boostpack setup.</td></tr>
+                <tr><td>Type Slot</td><td>Balanced Boostpack</td><td>Boostpack with a balanced distribution of power and volume.</td></tr>
+                <tr><td>Type Slot</td><td>Power Boostpack</td><td>Focuses thrust for maximum vertical momentum.</td></tr>
+                <tr><td>Type Slot</td><td>Skip Capacity Boostpack</td><td>Provides multiple short, rapid horizontal bursts.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Ablative</td><td>-15% incoming energy damage.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Anti-Ballistic</td><td>-15% incoming Physical damage from ranged weapons.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Beast Hunter</td><td>-15% damage from Alien enemies.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Bolstering</td><td>Grants up to +100 Energy resistance and Physical resistance, the lower your health.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Chameleon</td><td>Blend with the environment while sneaking and not moving.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Combat Veteran</td><td>-15% damage from Human enemies.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>O2 Boosted</td><td>+20% oxygen capacity.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>O2 Filter</td><td>-25% oxygen consumption.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Sturdy</td><td>-15% incoming melee damage.</td></tr>
+                <tr><td>Rank 1 (Rare)</td><td>Technician</td><td>-15% damage from Robot enemies.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Acrobat</td><td>-50% fall damage.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Analyzer</td><td>+10% damage to scanned targets.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Antiseptic</td><td>+25 Airborne Resistance.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Auto-Medic</td><td>Automatically use a Med Pack when hit and health is below 25%, once every 60 seconds.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Fastened</td><td>+20 carry capacity.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Galvanized</td><td>+25 Corrosive Resistance.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Hacker</td><td>+2 max auto attempts that can be banked while hacking.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Leadlined</td><td>+25 Radiation Resistance.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Liquid Cooled</td><td>+25 Thermal Resistance.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Resource Hauler</td><td>Resources weigh 25% less.</td></tr>
+                <tr><td>Rank 2 (Epic)</td><td>Weapon Holsters</td><td>Weapons weigh 50% less.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Armor-Plated</td><td>-10% incoming Physical, Energy, and EM damage.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Assisted Carry</td><td>Drain 75% less O2 when running while encumbered.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Fast Reflexes</td><td>+15% Movement speed.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Headhunter</td><td>Deals +25% damage on the next attack after hitting a target's head.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Incendiary</td><td>10% chance to ignite nearby attackers.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Mechanized</td><td>+40 carry capacity.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Mirrored</td><td>4% chance to reflect attacks.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Reactive</td><td>10% chance to stagger nearby attackers.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Repulsing</td><td>5% chance to disarm nearby attackers.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Sentinel</td><td>75% chance to reduce damage by 50% while standing still.</td></tr>
+                <tr><td>Rank 3 (Legendary)</td><td>Sensor Chip</td><td>+20% accuracy while firing on the move.</td></tr>
+            </tbody>
+        </table>
     </div>
 
 </div>
+
+<script>
+    function openTab(evt, tabName) {
+        let i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+        
+        document.getElementById("searchInput").value = "";
+        searchTables();
+    }
+
+    function searchTables() {
+        let input, filter, activeTab, table, tr, td, i, j, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toLowerCase();
+        
+        let tabcontents = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontents.length; i++) {
+            if (tabcontents[i].style.display === "block") {
+                activeTab = tabcontents[i];
+                break;
+            }
+        }
+        
+        if(activeTab) {
+            table = activeTab.getElementsByTagName("table")[0];
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) {
+                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td");
+                for (j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    let sortDirections = {};
+    function sortTable(tableId, columnIndex) {
+        let table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById(tableId);
+        let headers = table.getElementsByTagName("th");
+        
+        // Reset other headers classes
+        for (let h = 0; h < headers.length; h++) {
+            if (h !== columnIndex) {
+                headers[h].classList.remove("asc", "desc");
+            }
+        }
+        
+        let currentHeader = headers[columnIndex];
+        
+        if (!(tableId + columnIndex in sortDirections)) {
+            sortDirections[tableId + columnIndex] = true;
+            currentHeader.classList.add("asc");
+        } else {
+            sortDirections[tableId + columnIndex] = !sortDirections[tableId + columnIndex];
+            if (sortDirections[tableId + columnIndex]) {
+                currentHeader.classList.remove("desc");
+                currentHeader.classList.add("asc");
+            } else {
+                currentHeader.classList.remove("asc");
+                currentHeader.classList.add("desc");
+            }
+        }
+        
+        let sortDir = sortDirections[tableId + columnIndex];
+        switching = true;
+
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[columnIndex];
+                y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+                
+                let valX = x.textContent || x.innerText;
+                let valY = y.textContent || y.innerText;
+
+                // Handle natural alphanumeric sorting if possible
+                if (sortDir) {
+                    if (valX.toLowerCase() > valY.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else {
+                    if (valX.toLowerCase() < valY.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+            }
+        }
+    }
+</script>
 
 </body>
 </html>
