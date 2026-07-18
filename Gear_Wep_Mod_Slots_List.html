@@ -149,6 +149,32 @@
         padding-bottom: 10px;
         font-size: 20px;
     }
+    
+    /* Links Box Navigation Styling */
+    .links-box {
+        background-color: #1a1d2d;
+        border: 1px solid #2d3748;
+        padding: 15px;
+        text-align: center;
+        margin-bottom: 30px;
+        border-radius: 6px;
+    }
+    .btn {
+        display: inline-block;
+        background-color: #f97316;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 10px 15px;
+        margin: 5px 10px;
+        border-radius: 4px;
+        font-weight: bold;
+        font-size: 10.5pt;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    .btn:hover {
+        background-color: #ea580c;
+        color: #ffffff;
+    }
 </style>
 </head>
 <body>
@@ -156,6 +182,15 @@
 <div class="container">
     <h1>Starfield Equipment Mod Database</h1>
     
+    <div class="links-box" style="margin-top: 10px; margin-bottom: 25px;">
+        <a href="index.html" class="btn">Home Page</a>
+        <a href="Playthrough-plan.html" class="btn">Playthrough Plan</a>
+        <a href="https://drive.google.com/drive/folders/1IuJSevtT30CsbuSPgMwMbvyM0jWRvTxs?usp=sharing" class="btn" target="_blank">Custom INI Configs</a>
+        <a href="Gear_Wep_Mod_Slots_List.html" class="btn">Mod Slot List (Weapons/Gear)</a>
+        <a href="Elite_Crew_Members.html" class="btn">Elite Crew Members</a>
+        <a href="Watchtower_Cyberamps.html" class="btn">Watchtower Cyberamps</a>
+    </div>
+
     <div class="search-container">
         <input type="text" id="searchInput" onkeyup="searchTables()" placeholder="Search active table for mods, descriptions, or slots...">
     </div>
@@ -226,6 +261,7 @@
                 <tr><td>Magazine & Battery</td><td>Penetrator Rounds</td><td>Pierces cleanly through enemies and thin cover surfaces.</td></tr>
                 <tr><td>Magazine & Battery</td><td>Whitehot Rounds</td><td>Thermal-tipped ammunition designed to continuously burn targets.</td></tr>
                 <tr><td>Magazine & Battery</td><td>Annihilator Rounds</td><td>Projectiles radiating an unstable aura that aggressively spreads across adjacent entities.</td></tr>
+                <tr><td>Magazine & Battery</td><td>Slug Shot</td><td>Single, large projectiles that can be fired much further and more accurately.</td></tr>
                 <tr><td>Internal</td><td>Amplifier</td><td>Scales energy beam potency and overall kinetic power output.</td></tr>
                 <tr><td>Internal</td><td>Bullet Hose</td><td>Specialized high-cycle action multiplying range, fire rate, and accuracy attributes.</td></tr>
                 <tr><td>Internal</td><td>Hair Trigger</td><td>Significantly increases weapon cycle response and fire rate.</td></tr>
@@ -306,20 +342,35 @@
                 <tr><td>Slot 1</td><td>Energy Shielding</td><td>Increases Energy resistance.</td></tr>
                 <tr><td>Slot 1 (Additional)</td><td>Improved Ballistic Shielding</td><td>greatly increases ballistic resistance.</td></tr>
                 <tr><td>Slot 1 (Additional)</td><td>EM+Energy Shielding</td><td>increases both energy and EM resistances.</td></tr>
+                <tr><td>Slot 1 (Additional)</td><td>Vigilance Slot 1: Poly-Aramid Weave</td><td>Weaves an advanced poly-aramid fiber layer into the undersuit that greatly improves resistance to impact damage but is very heavy.</td></tr>
+                <tr><td>Slot 1 (Additional)</td><td>Vigilance Slot 1: Artificial Muscle</td><td>Installs a thin artificial muscle layer that responds to the wearers movements in order to increase strength and speed but it is very expensive to produce.</td></tr>
+                <tr><td>Slot 1 (Additional)</td><td>Vigilance Slot 1: Energy Dissipation</td><td>Installs a Caelumite based layer in the undersuit that helps dissipate incoming energy weapon damage as well as improving thermal and radiation resistance.</td></tr>
                 <tr><td>Slot 2</td><td>Explosive Shielding</td><td>Reduces damage taken from explosives.</td></tr>
                 <tr><td>Slot 2</td><td>Optimized Servos</td><td>Reduces Oxygen cost for sprinting.</td></tr>
                 <tr><td>Slot 2</td><td>Auto-Medic</td><td>Automatically use a Med Pack when hit and health is below 25%, once every 60 seconds.</td></tr>
                 <tr><td>Slot 2 (Additional)</td><td>Thermal/Corrosive/Radiation/Airborne Shielding</td><td>increases resistance to corresponding environmental damage.</td></tr>
+                <tr><td>Slot 2 (Additional)</td><td>Vigilance Slot 2: ERA</td><td>Fits the armor plating with a type of old Earth style armor that absorbs a massive amount of damage but is single use and won't work when the suit is damaged in any way (below 99% Health).</td></tr>
                 <tr><td>Slot 3</td><td>Heavy Shielding</td><td>Increases all overarching damage resistances.</td></tr>
                 <tr><td>Slot 3</td><td>Exo Servos</td><td>Increases melee damage output.</td></tr>
                 <tr><td>Slot 3 (Additional)</td><td>Chem Distribution System</td><td>increases all Chems duration.</td></tr>
                 <tr><td>Slot 3 (Additional)</td><td>Composite Materials</td><td>reduces weight.</td></tr>
                 <tr><td>Slot 3 (Additional)</td><td>Hazard Protection</td><td>increases resistance to all types of environmental damage.</td></tr>
+                <tr><td>Slot 3 (Additional)</td><td>Vigilance Slot 3: Aim Stabilizer</td><td>Equips the armor with a suite of systems that assist with aiming down a scope or sight by compensating for natural movement or 'sway'.</td></tr>
                 <tr><td>Slot 4</td><td>Pocketed</td><td>Increases overall carrying capacity.</td></tr>
                 <tr><td>Slot 4</td><td>Gravitic Composites</td><td>Reduces detection from enemies, enhancing stealth.</td></tr>
                 <tr><td>Slot 4 (Additional)</td><td>Fortified Servos</td><td>increases jump height.</td></tr>
                 <tr><td>Slot 4 (Additional)</td><td>Life Support</td><td>decreases change of getting an affliction.</td></tr>
                 <tr><td>Slot 4 (Additional)</td><td>Internal Dampeners</td><td>increases stagger resistance.</td></tr>
+                <tr><td>Slot 4 (Additional)</td><td>Vigilance Slot 4: Climate Control</td><td>Fits the suit with more complex climate systems that help maintain the users comfort and safety in harsh environments.</td></tr>
+                <tr><td>Slot 4 (Additional)</td><td>Vigilance Slot 4: Emergency Shield</td><td>Reverse engineered from the single use deployable shields this suit modification will automatically deploy a shield to protect the user in emergency situations (below 30% Health) but has a cooldown period between activations.</td></tr>
+                <tr><td>Slot 4 (Additional)</td><td>Vigilance Slot 4: Damage Mitigation</td><td>Installs a prototype shield generator that absorbs some incoming damage until the suit is badly damaged (below 25% Health).</td></tr>
+                <tr><td>Armor Ability Slot (Vigilance)</td><td>Vigilance Spacesuit: Boostpack Fuel Converter</td><td>Installs a system that, when active, converts the suits 02 supply into fuel for an equipped boostpack.</td></tr>
+                <tr><td>Armor Ability Slot (Vigilance)</td><td>Vigilance Spacesuit: Celestial</td><td>When active the suit will draw energy from the universe and use it to greatly increase your power recovery rate.</td></tr>
+                <tr><td>Armor Ability Slot (Vigilance)</td><td>Vigilance Spacesuit: Class III Stimulant Injector</td><td>Constantly doses the user with a drug cocktail that improves muscle strength and reaction times but increases the bodies O2 usage.</td></tr>
+                <tr><td>Armor Ability Slot (Vigilance)</td><td>Vigilance Spacesuit: Ethereal</td><td>Granted from beyond by something filled with dread. When active your outgoing damage will double but your health will constantly drain.</td></tr>
+                <tr><td>Armor Ability Slot (Vigilance)</td><td>Mirage Prototype Camouflage</td><td>Installs advanced light bending radiation emitters throughout the surface of the suit that render the user completely invisible but exposes them to ionizing radiation.</td></tr>
+                <tr><td>Armor Ability Slot (Vigilance)</td><td>Vigilance Spacesuit: Mark III-B Lockdown Protocol</td><td>Installs an advanced defensive system that, when active, reduces incoming damage but also reduces movement speed.</td></tr>
+                <tr><td>Armor Ability Slot (Vigilance)</td><td>Vigilance Spacesuit: SBO Prototype Gravity Lock</td><td>Developed from studying the Starborn device located at excavation site TX-140A. When active the suit locks to 1G allowing the user to more comfortably move in both high and low gravity environments.</td></tr>
                 <tr><td>Rank 1 (Rare)</td><td>Ablative</td><td>-15% incoming energy damage.</td></tr>
                 <tr><td>Rank 1 (Rare)</td><td>Anti-Ballistic</td><td>-15% incoming Physical damage from ranged weapons.</td></tr>
                 <tr><td>Rank 1 (Rare)</td><td>Beast Hunter</td><td>-15% damage from Alien enemies.</td></tr>
@@ -383,6 +434,8 @@
                 <tr><td>Slot 2</td><td>Explosive Shielding</td><td>Reduces damage taken from explosives.</td></tr>
                 <tr><td>Slot 2</td><td>Sensor Array</td><td>Increases the detection range of enemies on the compass.</td></tr>
                 <tr><td>Slot 2 (Additional)</td><td>Thermal/Corrosive/Radiation/Airborne Shielding</td><td>increases resistance to corresponding environmental damage.</td></tr>
+                <tr><td>Slot 2 (Additional)</td><td>Custom Cybernetic</td><td>Installs an advanced neural link into the helmet that connects to your cybernetic implants to enhance hostile detection range and hacking abilities.</td></tr>
+                <tr><td>Slot 2 (Additional)</td><td>Vigilance Slot 2: Custom Cybernetic</td><td>Installs an advanced neural link into the helmet that connects to your cybernetic implants to enhance hostile detection range and hacking abilities.</td></tr>
                 <tr><td>Slot 3</td><td>Heavy Shielding</td><td>Increases all overarching damage resistances.</td></tr>
                 <tr><td>Slot 3 (Additional)</td><td>Composite Materials</td><td>reduces weight.</td></tr>
                 <tr><td>Slot 3 (Additional)</td><td>Hazard Protection</td><td>increases resistance to all types of environmental damage.</td></tr>
@@ -393,6 +446,8 @@
                 <tr><td>Slot 4 (Additional)</td><td>Combat Interface</td><td>increases weapon accuracy.</td></tr>
                 <tr><td>Slot 4 (Additional)</td><td>Tactical Analyzer</td><td>increases critical chance and critical damage.</td></tr>
                 <tr><td>Slot 4 (Additional)</td><td>Reinforced Visor</td><td>decreases headshot damage.</td></tr>
+                <tr><td>Helmet Ability Slot (Vigilance)</td><td>Vigilance Helmet Slot 1: Hacked IFF</td><td>Re-enables the helmets built in IFF highlighting with personal software modifications.</td></tr>
+                <tr><td>Helmet Ability Slot (Vigilance)</td><td>Vigilance Helmet Slot 1: Night Vision</td><td>Improves vision in dark locations and highlights humans, aliens and robots but reduces vision in the light doesn't distinguish between friend or foe.</td></tr>
                 <tr><td>Rank 1 (Rare)</td><td>Ablative</td><td>-15% incoming energy damage.</td></tr>
                 <tr><td>Rank 1 (Rare)</td><td>Anti-Ballistic</td><td>-15% incoming Physical damage from ranged weapons.</td></tr>
                 <tr><td>Rank 1 (Rare)</td><td>Beast Hunter</td><td>-15% damage from Alien enemies.</td></tr>
@@ -453,11 +508,13 @@
                 <tr><td>Slot 1</td><td>Oxygen Reserve</td><td>Expands maximum oxygen reserves.</td></tr>
                 <tr><td>Slot 1 (Additional)</td><td>Slot 1: Zero-G Stabilizers</td><td>less weapon recoil in Zero-G.</td></tr>
                 <tr><td>Slot 1 (Additional)</td><td>Slot 1: Heavy Shielding</td><td>increase all damage resistance and weight.</td></tr>
+                <tr><td>Slot 1 (Additional)</td><td>Vigilance Slot 1: Custom Plating</td><td>Installs additional armor plating on the boost pack to protect it's internal parts and the user.</td></tr>
                 <tr><td>Slot 2</td><td>Emergency Aid</td><td>Administers emergency aid when health is low, recharging after a short time.</td></tr>
                 <tr><td>Slot 2</td><td>Medic</td><td>Enhances overall medical capabilities.</td></tr>
                 <tr><td>Slot 2</td><td>Regeneration</td><td>Slowly restores health outside of active combat scenarios.</td></tr>
                 <tr><td>Slot 2 (Additional)</td><td>Ammo Pockets</td><td>increases reload speed.</td></tr>
                 <tr><td>Slot 2 (Additional)</td><td>Weight Redistribution</td><td>decreases weight of all items.</td></tr>
+                <tr><td>Slot 2 (Additional)</td><td>Vigilance Slot 2: Custom FuelInjector</td><td>Installs a custom fuel injection system that boosts the initial boostpack thrust.</td></tr>
                 <tr><td>Type Slot</td><td>Basic Boostpack</td><td>Entry-level boostpack setup.</td></tr>
                 <tr><td>Type Slot</td><td>Balanced Boostpack</td><td>Boostpack with a balanced distribution of power and volume.</td></tr>
                 <tr><td>Type Slot</td><td>Power Boostpack</td><td>Focuses thrust for maximum vertical momentum.</td></tr>

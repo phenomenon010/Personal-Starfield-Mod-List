@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starfield Elite Crew Database</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container" style="max-width: 1200px; margin-bottom: 30px; background: none; border: none; box-shadow: none; padding: 0;">
+    <div class="hero">
+        <h1>Starfield Elite Crew Database</h1>
+        <p>A directory of all high-skill crew members, companions, and secondary followers available in Starfield, including their skills, locations, and how to unlock them.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="links-box" style="margin-top: -15px; margin-bottom: 25px;">
+        <a href="index.html" class="btn">Home Page</a>
+        <a href="Playthrough-plan.html" class="btn">Playthrough Plan</a>
+        <a href="https://drive.google.com/drive/folders/1IuJSevtT30CsbuSPgMwMbvyM0jWRvTxs?usp=sharing" class="btn" target="_blank">Custom INI Configs</a>
+        <a href="Gear_Wep_Mod_Slots_List.html" class="btn">Mod Slot List (Weapons/Gear)</a>
+        <a href="Elite_Crew_Members.html" class="btn">Elite Crew Members</a>
+        <a href="Watchtower_Cyberamps.html" class="btn">Watchtower Cyberamps</a>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="searchTables()" placeholder="Search active table for crew, skills, locations...">
+    </div>
+
+    <div class="tab">
+        <button class="tablinks active" onclick="openTab(event, 'EliteCrew')">Elite Crew Members</button>
+        <button class="tablinks" onclick="openTab(event, 'SecondaryCompanions')">Secondary Companions</button>
+    </div>
+
+    <!-- ELITE CREW MEMBERS TAB -->
+    <div id="EliteCrew" class="tabcontent" style="display: block;">
+        <h2 class="table-title">Elite Crew Members & Companions</h2>
+        <table id="EliteCrewTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('EliteCrewTable', 0)">Name <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('EliteCrewTable', 1)">Category <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('EliteCrewTable', 2)">Skills <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('EliteCrewTable', 3)">Location <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('EliteCrewTable', 4)">Notes <span class="sort-icon"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sarah Morgan</td>
+                    <td>Constellation Elite Companions</td>
+                    <td>Astrodynamics ★★★★<br>Lasers ★★★<br>Leadership ★★<br>Botany ★</td>
+                    <td>Constellation HQ</td>
+                    <td>Full Story + 4★ Skills</td>
+                </tr>
+                <tr>
+                    <td>Sam Coe</td>
+                    <td>Constellation Elite Companions</td>
+                    <td>Piloting ★★★★<br>Rifle Certification ★★★<br>Payloads ★★<br>Geology ★</td>
+                    <td>Constellation HQ</td>
+                    <td>Full Story + 4★ Skills</td>
+                </tr>
+                <tr>
+                    <td>Barrett</td>
+                    <td>Constellation Elite Companions</td>
+                    <td>Starship Engineering ★★★★<br>Particle Beams ★★★<br>Robotics ★★<br>Gastronomy ★</td>
+                    <td>Constellation HQ</td>
+                    <td>Full Story + 4★ Skills</td>
+                </tr>
+                <tr>
+                    <td>Andreja</td>
+                    <td>Constellation Elite Companions</td>
+                    <td>Stealth ★★★★<br>Particle Beams ★★★<br>Energy Weapons ★★<br>Theft ★</td>
+                    <td>Constellation HQ</td>
+                    <td>Full Story + 4★ Skills</td>
+                </tr>
+                <tr>
+                    <td>VASCO</td>
+                    <td>Constellation Elite Companions</td>
+                    <td>Shield Systems ★★<br>Aneutronic Fusion ★</td>
+                    <td>Constellation HQ</td>
+                    <td>Utility Robot</td>
+                </tr>
+                <tr>
+                    <td>Erick Von Price</td>
+                    <td>Constellation Elite Companions</td>
+                    <td>Astrodynamics ★★<br>Payloads ★</td>
+                    <td>Varies</td>
+                    <td>Navigation / Payloads</td>
+                </tr>
+                <tr>
+                    <td>Marika Boros</td>
+                    <td>Elite Hireable Crew (Non-Constellation)</td>
+                    <td>Ballistics ★★<br>Shotgun Certification ★<br>Particle Beam Weapons ★</td>
+                    <td>The Viewport, New Atlantis</td>
+                    <td>Ship Weapons Specialist</td>
+                </tr>
+                <tr>
+                    <td>Betty Howser</td>
+                    <td>Elite Hireable Crew (Non-Constellation)</td>
+                    <td>Demolitions ★★★<br>Missile Weapons ★★</td>
+                    <td>Heinlein I</td>
+                    <td>Missile Specialist</td>
+                </tr>
+                <tr>
+                    <td>Gideon Aker</td>
+                    <td>Elite Hireable Crew (Non-Constellation)</td>
+                    <td>Ballistics ★★<br>Missile Weapons ★★</td>
+                    <td>Akila City</td>
+                    <td>Weapons Specialist</td>
+                </tr>
+                <tr>
+                    <td>Lin</td>
+                    <td>Elite Outpost Crew</td>
+                    <td>Outpost Management ★★★<br>Demolitions ★</td>
+                    <td>Vectera</td>
+                    <td>Outpost Manager</td>
+                </tr>
+                <tr>
+                    <td>Heller</td>
+                    <td>Elite Outpost Crew</td>
+                    <td>Outpost Engineering ★★★<br>Geology ★</td>
+                    <td>Virum</td>
+                    <td>Outpost Engineer</td>
+                </tr>
+                <tr>
+                    <td>Andromeda Kepler</td>
+                    <td>Elite Outpost Crew</td>
+                    <td>Outpost Engineering ★★<br>Piloting ★<br>Aneutronic Fusion ★</td>
+                    <td>Mars</td>
+                    <td>Hybrid Engineer</td>
+                </tr>
+                <tr>
+                    <td>Jessamine Griffin</td>
+                    <td>Elite Stealth / Utility Crew</td>
+                    <td>Ballistics ★★<br>Theft ★<br>Concealment ★</td>
+                    <td>The Key</td>
+                    <td>Stealth / Theft</td>
+                </tr>
+                <tr>
+                    <td>Ezekiel</td>
+                    <td>Elite Stealth / Utility Crew</td>
+                    <td>Shield Systems ★<br>Scavenging ★<br>Energy Dissipation ★★</td>
+                    <td>Akila City</td>
+                    <td>Defensive Utility</td>
+                </tr>
+                <tr>
+                    <td>Dani Garcia</td>
+                    <td>Elite Science / Tech Crew</td>
+                    <td>Robotics ★★<br>Chemistry ★<br>Energy Weapons ★</td>
+                    <td>Volii Alpha</td>
+                    <td>Robotics / Chemistry</td>
+                </tr>
+                <tr>
+                    <td>Muria Siarkiewicz</td>
+                    <td>Special Recruit: Muria (GalBank Hireling)</td>
+                    <td>Skill spread varies by patch (typically 3★ mix)</td>
+                    <td>GalBank Lobby, New Atlantis</td>
+                    <td>Added in Free Lanes update; no personal mission.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- SECONDARY COMPANIONS TAB -->
+    <div id="SecondaryCompanions" class="tabcontent">
+        <h2 class="table-title">Secondary Companions & Followers</h2>
+        <table id="SecondaryCompanionsTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('SecondaryCompanionsTable', 0)">Companion <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('SecondaryCompanionsTable', 1)">How to Unlock <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('SecondaryCompanionsTable', 2)">Quest Connection <span class="sort-icon"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lin and Heller</td>
+                    <td>Return to Vectera during The Empty Nest</td>
+                    <td>Serve as early crew; no personal quests.</td>
+                </tr>
+                <tr>
+                    <td>Autumn MacMillan</td>
+                    <td>Complete The Hammer Falls</td>
+                    <td>Offers brief follow‑up dialogue at Red Mile.</td>
+                </tr>
+                <tr>
+                    <td>Mathis Castillo</td>
+                    <td>Finish Legacy’s End siding with the Crimson Fleet</td>
+                    <td>Gains minor dialogue but no standalone mission.</td>
+                </tr>
+                <tr>
+                    <td>Major Hadrian Sanon</td>
+                    <td>Finish A Legacy Forged</td>
+                    <td>Can be recruited; no separate questline.</td>
+                </tr>
+                <tr>
+                    <td>Amelia Earhart (clone)</td>
+                    <td>Complete Operation Starseed</td>
+                    <td>Optional recruit; no personal mission.</td>
+                </tr>
+                <tr>
+                    <td>Rafael Aguerro</td>
+                    <td>Complete Entangled and save his reality</td>
+                    <td>Joins afterward; no personal quest beyond that.</td>
+                </tr>
+                <tr>
+                    <td>Moara Otero</td>
+                    <td>After The Old Neighborhood</td>
+                    <td>Minor ship‑combat specialist; no questline.</td>
+                </tr>
+                <tr>
+                    <td>Jessamine Griffin</td>
+                    <td>Visit Last Nova on The Key</td>
+                    <td>Hireable crew; no missions.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- PLAYTHROUGH NOTES SECTION -->
+    <div class="notes-section">
+        <h2 class="notes-title">📌 Crew Member Notes</h2>
+        <div class="note-item">
+            <p><strong>"Elite"</strong> = crew with multiple high‑rank skills (3★–4★).</p>
+            <p>Constellation companions are elite by default due to their 4★ skills.</p>
+            <p>Non‑Constellation elite crew are the strongest hires for ships and outposts.</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        let i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+
+        document.getElementById("searchInput").value = "";
+        searchTables();
+    }
+
+    function searchTables() {
+        let input, filter, activeTab, table, tr, td, i, j, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toLowerCase();
+
+        let tabcontents = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontents.length; i++) {
+            if (tabcontents[i].style.display === "block") {
+                activeTab = tabcontents[i];
+                break;
+            }
+        }
+
+        if(activeTab) {
+            table = activeTab.getElementsByTagName("table")[0];
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) {
+                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td");
+                for (j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    let sortDirections = {};
+    function sortTable(tableId, columnIndex) {
+        let table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById(tableId);
+        let headers = table.getElementsByTagName("th");
+
+        // Reset other headers classes
+        for (let h = 0; h < headers.length; h++) {
+            if (h !== columnIndex) {
+                headers[h].classList.remove("asc", "desc");
+            }
+        }
+
+        let currentHeader = headers[columnIndex];
+
+        if (!(tableId + columnIndex in sortDirections)) {
+            sortDirections[tableId + columnIndex] = true;
+            currentHeader.classList.add("asc");
+        } else {
+            sortDirections[tableId + columnIndex] = !sortDirections[tableId + columnIndex];
+            if (sortDirections[tableId + columnIndex]) {
+                currentHeader.classList.remove("desc");
+                currentHeader.classList.add("asc");
+            } else {
+                currentHeader.classList.remove("asc");
+                currentHeader.classList.add("desc");
+            }
+        }
+
+        let sortDir = sortDirections[tableId + columnIndex];
+        switching = true;
+
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[columnIndex];
+                y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+
+                let valX = x.textContent || x.innerText;
+                let valY = y.textContent || y.innerText;
+
+                // Handle natural alphanumeric sorting
+                if (sortDir) {
+                    if (valX.toLowerCase() > valY.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else {
+                    if (valX.toLowerCase() < valY.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

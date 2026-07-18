@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starfield Multiverse Playthrough Plan</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container" style="max-width: 1200px; margin-bottom: 30px; background: none; border: none; box-shadow: none; padding: 0;">
+    <div class="hero">
+        <h1>Multiverse Playthrough Plan</h1>
+        <p>The Starfield engine has its limitations, especially when trying to run massive, heavy load orders all at once. Staging these mods across distinct Unity jumps is a fantastic way to work within those technical boundaries while ensuring peak stability. </p>
+        <p>Beyond performance, this method takes the core multiverse theme that attracted us to the game and pushes it a step further: by altering the quests, points of interest, and world-spaces in each iteration, we guarantee that <strong>every time you step through the Unity, it truly feels like exploring a fresh, new universe</strong>. The tables below map out exactly which mods are active during each specific jump.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="links-box" style="margin-top: -15px; margin-bottom: 25px;">
+        <a href="index.html" class="btn">Home Page</a>
+        <a href="Playthrough-plan.html" class="btn">Playthrough Plan</a>
+        <a href="https://drive.google.com/drive/folders/1IuJSevtT30CsbuSPgMwMbvyM0jWRvTxs?usp=sharing" class="btn" target="_blank">Custom INI Configs</a>
+        <a href="Gear_Wep_Mod_Slots_List.html" class="btn">Mod Slot List (Weapons/Gear)</a>
+        <a href="Elite_Crew_Members.html" class="btn">Elite Crew Members</a>
+        <a href="Watchtower_Cyberamps.html" class="btn">Watchtower Cyberamps</a>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="searchTables()" placeholder="Search active table for mods or jump requirements...">
+    </div>
+
+    <div class="tab">
+        <button class="tablinks active" onclick="openTab(event, 'QuestMods')">Quest Mods</button>
+        <button class="tablinks" onclick="openTab(event, 'BigPOI')">Big POI Mods</button>
+        <button class="tablinks" onclick="openTab(event, 'WorldSpace')">World-Space Edits</button>
+    </div>
+
+    <!-- QUEST MODS TAB -->
+    <div id="QuestMods" class="tabcontent" style="display: block;">
+        <h2 class="table-title">Quest Mods Deployment</h2>
+        <table id="QuestTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('QuestTable', 0)">Name <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('QuestTable', 1)">Required <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('QuestTable', 2)">Unity 1 <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('QuestTable', 3)">Unity 2 <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('QuestTable', 4)">Unity 3 <span class="sort-icon"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Mining Conglomerate</td><td></td><td></td><td class="active-jump">X</td><td></td></tr>
+                <tr><td>Continuum</td><td></td><td></td><td class="active-jump">X</td><td></td></tr>
+                <tr><td>The Headhunter</td><td class="active-jump">X</td><td class="active-jump">X</td><td class="active-jump">X</td><td class="active-jump">X</td></tr>
+                <tr><td>Everbright</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>At Hells Gate</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>Cryomancers</td><td class="active-jump">X</td><td class="active-jump">X</td><td class="active-jump">X</td><td class="active-jump">X</td></tr>
+                <tr><td>Sammy and the Lab of Nightmares</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>Vigilance</td><td class="active-jump">X</td><td class="active-jump">X</td><td class="active-jump">X</td><td class="active-jump">X</td></tr>
+                <tr><td>Chucks Noir</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>From the Gutter Neon Quest</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>Redgrave</td><td></td><td></td><td class="active-jump">X</td><td></td></tr>
+                <tr><td>The Perfect Recipe</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>The Veil</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>The Veil: Beyond The Vail</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>Watchtower: Orbital. Strike</td><td class="active-jump">X</td><td class="active-jump">X</td><td class="active-jump">X</td><td class="active-jump">X</td></tr>
+                <tr><td>More Lore - Legacy of the Mantis</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>McClarence Outfitters</td><td class="active-jump">X</td><td class="active-jump">X</td><td class="active-jump">X</td><td class="active-jump">X</td></tr>
+                <tr><td>The Silent Covenant</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>Trackers Alliance - The Complete Bounty</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>Legacy's End - Wild Card*</td><td></td><td class="active-jump">X</td><td></td><td class="incompatible">INCOMPATIBLE</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- BIG POI MODS TAB -->
+    <div id="BigPOI" class="tabcontent">
+        <h2 class="table-title">Big POI Mods Deployment</h2>
+        <table id="POITable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('POITable', 0)">Name <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('POITable', 1)">Required <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('POITable', 2)">Unity 1 <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('POITable', 3)">Unity 2 <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('POITable', 4)">Unity 3 <span class="sort-icon"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Factions & Encounters Expanded*</td><td></td><td class="active-jump">X</td><td></td><td class="active-jump">X</td></tr>
+                <tr><td>Forgotten Frontiers**</td><td></td><td></td><td class="active-jump">X</td><td></td></tr>
+                <tr><td>Forgotten Frontiers 2**</td><td></td><td></td><td class="active-jump">X</td><td></td></tr>
+                <tr><td>Dark Universe Crossfire</td><td></td><td></td><td></td><td class="active-jump">X</td></tr>
+                <tr><td>Dark Universe - Retrograde</td><td class="tbd">TBD</td><td></td><td></td><td></td></tr>
+                <tr><td>Dark Universe Overtime (300 POI)</td><td class="tbd">TBD</td><td></td><td></td><td></td></tr>
+                <tr><td>Dark Universe Takeover*</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>Dark Universe Outlaws 01 (bounty Hunting)</td><td></td><td></td><td class="active-jump">X</td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- WORLD-SPACE EDITS TAB -->
+    <div id="WorldSpace" class="tabcontent">
+        <h2 class="table-title">World-Space Edits Deployment</h2>
+        <table id="WorldSpaceTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('WorldSpaceTable', 0)">Name <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('WorldSpaceTable', 1)">Required <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('WorldSpaceTable', 2)">Unity 1 <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('WorldSpaceTable', 3)">Unity 2 <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('WorldSpaceTable', 4)">Unity 3 <span class="sort-icon"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Euphorika - Underworld</td><td></td><td class="active-jump">X</td><td class="active-jump">X</td><td></td></tr>
+                <tr><td>UC Distribution Center</td><td></td><td class="active-jump">X</td><td></td><td class="active-jump">X</td></tr>
+                <tr><td>Outland - Frontier Ready</td><td></td><td class="active-jump">X</td><td></td><td class="active-jump">X</td></tr>
+                <tr><td>The Den -Last Stop</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>Colony One</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>New Atlantis Awaits</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>New At Awaits - The Well</td><td></td><td class="active-jump">X</td><td></td><td></td></tr>
+                <tr><td>Akila City Rises</td><td></td><td></td><td class="active-jump">X</td><td></td></tr>
+                <tr><td>Neon Veins</td><td></td><td></td><td class="active-jump">X</td><td></td></tr>
+                <tr><td>Hope Town New Dawn</td><td></td><td></td><td class="active-jump">X</td><td></td></tr>
+                <tr><td>Paradiso Evolved</td><td></td><td></td><td></td><td class="active-jump">X</td></tr>
+                <tr><td>Neon Expansion</td><td></td><td></td><td></td><td class="active-jump">X</td></tr>
+                <tr><td>Va'Ruun'Kai Reimagined</td><td></td><td></td><td></td><td class="active-jump">X</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- PLAYTHROUGH NOTES SECTION -->
+    <div class="notes-section">
+        <h2 class="notes-title">⚠️ Playthrough Notes & Conflicts</h2>
+
+        <div class="note-item">
+            <h4>Quest Mods Notes</h4>
+            <p>* <strong>Legacy's End - Wild Card</strong> is marked as INCOMPATIBLE in Unity 3 because it is completely incompatible with the Dark Universe Crossfire mod.</p>
+        </div>
+
+        <div class="note-item">
+            <h4>Big POI Mods Notes</h4>
+            <p>* <strong>Factions & Encounters Expanded</strong> and <strong>Dark Universe Takeover</strong> require the <em>Dark Universe: Takeover patch for Factions & Encounters Expanded</em>.</p>
+            <p>** <strong>Forgotten Frontiers</strong> and <strong>Forgotten Frontiers 2</strong> require the <em>Forgotten Frontiers 1 and 2 patch for Factions & Encounters Expanded</em>.</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        let i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+
+        document.getElementById("searchInput").value = "";
+        searchTables();
+    }
+
+    function searchTables() {
+        let input, filter, activeTab, table, tr, td, i, j, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toLowerCase();
+
+        let tabcontents = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontents.length; i++) {
+            if (tabcontents[i].style.display === "block") {
+                activeTab = tabcontents[i];
+                break;
+            }
+        }
+
+        if(activeTab) {
+            table = activeTab.getElementsByTagName("table")[0];
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) {
+                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td");
+                for (j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    let sortDirections = {};
+    function sortTable(tableId, columnIndex) {
+        let table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById(tableId);
+        let headers = table.getElementsByTagName("th");
+
+        // Reset other headers classes
+        for (let h = 0; h < headers.length; h++) {
+            if (h !== columnIndex) {
+                headers[h].classList.remove("asc", "desc");
+            }
+        }
+
+        let currentHeader = headers[columnIndex];
+
+        if (!(tableId + columnIndex in sortDirections)) {
+            sortDirections[tableId + columnIndex] = true;
+            currentHeader.classList.add("asc");
+        } else {
+            sortDirections[tableId + columnIndex] = !sortDirections[tableId + columnIndex];
+            if (sortDirections[tableId + columnIndex]) {
+                currentHeader.classList.remove("desc");
+                currentHeader.classList.add("asc");
+            } else {
+                currentHeader.classList.remove("asc");
+                currentHeader.classList.add("desc");
+            }
+        }
+
+        let sortDir = sortDirections[tableId + columnIndex];
+        switching = true;
+
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[columnIndex];
+                y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+
+                let valX = x.textContent || x.innerText;
+                let valY = y.textContent || y.innerText;
+
+                // Handle natural alphanumeric sorting
+                if (sortDir) {
+                    if (valX.toLowerCase() > valY.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else {
+                    if (valX.toLowerCase() < valY.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

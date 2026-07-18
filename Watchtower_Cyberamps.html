@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starfield Watchtower Cyberamps Database</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container" style="max-width: 1200px; margin-bottom: 30px; background: none; border: none; box-shadow: none; padding: 0;">
+    <div class="hero">
+        <h1>Watchtower Cyberamps Database</h1>
+        <p>A directory of facial cybernetic implants added by the Watchtower faction, providing shipboard and weapon boosts for yourself and your crew.</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="links-box" style="margin-top: -15px; margin-bottom: 25px;">
+        <a href="index.html" class="btn">Home Page</a>
+        <a href="Playthrough-plan.html" class="btn">Playthrough Plan</a>
+        <a href="https://drive.google.com/drive/folders/1IuJSevtT30CsbuSPgMwMbvyM0jWRvTxs?usp=sharing" class="btn" target="_blank">Custom INI Configs</a>
+        <a href="Gear_Wep_Mod_Slots_List.html" class="btn">Mod Slot List (Weapons/Gear)</a>
+        <a href="Elite_Crew_Members.html" class="btn">Elite Crew Members</a>
+        <a href="Watchtower_Cyberamps.html" class="btn">Watchtower Cyberamps</a>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="searchTables()" placeholder="Search cyberamps, categories, or functions...">
+    </div>
+
+    <!-- CYBERAMPS TABLE -->
+    <div id="Cyberamps" class="tabcontent" style="display: block; border-top: 1px solid #2d3748; border-radius: 6px;">
+        <h2 class="table-title">Watchtower Cyberamps List</h2>
+        <table id="CyberampsTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('CyberampsTable', 0)">CyberAmp <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('CyberampsTable', 1)">Function / Buff <span class="sort-icon"></span></th>
+                    <th onclick="sortTable('CyberampsTable', 2)">Category <span class="sort-icon"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lightwave Accelerator</td>
+                    <td>Increases ship speed and maneuvering thrust.</td>
+                    <td>Mobility</td>
+                </tr>
+                <tr>
+                    <td>Ballistic Calibrator</td>
+                    <td>Boosts ballistic weapon damage.</td>
+                    <td>Weapons</td>
+                </tr>
+                <tr>
+                    <td>Precision Module</td>
+                    <td>Enhances energy weapon damage.</td>
+                    <td>Weapons</td>
+                </tr>
+                <tr>
+                    <td>Quark Stabilizer</td>
+                    <td>Raises particle weapon damage.</td>
+                    <td>Weapons</td>
+                </tr>
+                <tr>
+                    <td>Beam Harmonizer</td>
+                    <td>Improves laser weapon efficiency and reduces heat buildup.</td>
+                    <td>Weapons</td>
+                </tr>
+                <tr>
+                    <td>Targeting Computer</td>
+                    <td>Increases ballistic weapon accuracy and lock‑on speed.</td>
+                    <td>Weapons</td>
+                </tr>
+                <tr>
+                    <td>Tactical Jump Interface</td>
+                    <td>Reduces grav‑jump cooldown and fuel use.</td>
+                    <td>Navigation</td>
+                </tr>
+                <tr>
+                    <td>Missile Guidance</td>
+                    <td>Improves missile tracking and damage.</td>
+                    <td>Weapons</td>
+                </tr>
+                <tr>
+                    <td>Disruption Coordinator</td>
+                    <td>Boosts electromagnetic (EM) weapon damage.</td>
+                    <td>Weapons</td>
+                </tr>
+                <tr>
+                    <td>Diagnostic Suite</td>
+                    <td>Enhances ship repair rate and system recovery speed.</td>
+                    <td>Engineering</td>
+                </tr>
+                <tr>
+                    <td>Propulsion Matrix</td>
+                    <td>Raises top speed and acceleration.</td>
+                    <td>Mobility</td>
+                </tr>
+                <tr>
+                    <td>Trajectory Analyzer</td>
+                    <td>Increases missile damage output.</td>
+                    <td>Weapons</td>
+                </tr>
+                <tr>
+                    <td>Magnetic Synchronizer</td>
+                    <td>Improves reactor efficiency and weapon recharge rate.</td>
+                    <td>Power</td>
+                </tr>
+                <tr>
+                    <td>Shield Amplifier</td>
+                    <td>Expands total shield capacity.</td>
+                    <td>Defense</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- PLAYTHROUGH PLAN NOTES SECTION -->
+    <div class="notes-section">
+        <h2 class="notes-title">⚙️ Unlocking and Upgrading Cyberamps</h2>
+        <div class="note-item">
+            <h4>General Details</h4>
+            <p>Each Cyberamp has three Marks — I, II, III — providing +5%, +10%, and +15% bonuses respectively.</p>
+        </div>
+        <div class="note-item">
+            <h4>Unlock Source</h4>
+            <p><strong>Dr. Sophia Laine</strong> at the Neuroamp Clinic (appears after completing the mission <em>"The Stars Have Eyes"</em>).</p>
+        </div>
+        <div class="note-item">
+            <h4>Upgrade Path</h4>
+            <p>Each Mark upgrade requires additional <strong>Computer Cores</strong> and <strong>Watchtower Intel</strong>.</p>
+        </div>
+        <div class="note-item">
+            <h4>Crew Synergy</h4>
+            <p>Equipping Cyberamps on fleet crew stacks their bonuses across all managed ships.</p>
+        </div>
+        <div class="note-item">
+            <h4>Visual Variants</h4>
+            <p>Available as left- or right-side facial implants. Optional invisible versions can be used via the <em>"Watchtower Internal Cyberamps"</em> mod.</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function searchTables() {
+        let input, filter, table, tr, td, i, j, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toLowerCase();
+        
+        table = document.getElementById("CyberampsTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 1; i < tr.length; i++) {
+            tr[i].style.display = "none";
+            td = tr[i].getElementsByTagName("td");
+            for (j = 0; j < td.length; j++) {
+                if (td[j]) {
+                    txtValue = td[j].textContent || td[j].innerText;
+                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    let sortDirections = {};
+    function sortTable(tableId, columnIndex) {
+        let table, rows, switching, i, x, y, shouldSwitch;
+        table = document.getElementById(tableId);
+        let headers = table.getElementsByTagName("th");
+
+        // Reset other headers classes
+        for (let h = 0; h < headers.length; h++) {
+            if (h !== columnIndex) {
+                headers[h].classList.remove("asc", "desc");
+            }
+        }
+
+        let currentHeader = headers[columnIndex];
+
+        if (!(tableId + columnIndex in sortDirections)) {
+            sortDirections[tableId + columnIndex] = true;
+            currentHeader.classList.add("asc");
+        } else {
+            sortDirections[tableId + columnIndex] = !sortDirections[tableId + columnIndex];
+            if (sortDirections[tableId + columnIndex]) {
+                currentHeader.classList.remove("desc");
+                currentHeader.classList.add("asc");
+            } else {
+                currentHeader.classList.remove("asc");
+                currentHeader.classList.add("desc");
+            }
+        }
+
+        let sortDir = sortDirections[tableId + columnIndex];
+        switching = true;
+
+        while (switching) {
+            switching = false;
+            rows = table.rows;
+            for (i = 1; i < (rows.length - 1); i++) {
+                shouldSwitch = false;
+                x = rows[i].getElementsByTagName("TD")[columnIndex];
+                y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+
+                let valX = x.textContent || x.innerText;
+                let valY = y.textContent || y.innerText;
+
+                // Handle natural alphanumeric sorting
+                if (sortDir) {
+                    if (valX.toLowerCase() > valY.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else {
+                    if (valX.toLowerCase() < valY.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+            }
+            if (shouldSwitch) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                switching = true;
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
